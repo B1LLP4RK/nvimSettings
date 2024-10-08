@@ -10,7 +10,7 @@ The setting file for [vim](https://www.vim.org/) or [neovim](https://neovim.io/)
 6. Install [coc-extension](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions) of your choice for static analysis
 - run `:CocInstall coc-java`
 
-## coc-extensions
+## Installing coc-snippets
 Many coc-extensions contribute to snippets to [coc-snippets](https://github.com/neoclide/coc-snippets).
 So coc-snippets should be installed to exploit the code snippets provided by other extensions.
 coc-snippets require pynvim library. python from 3.12 blocks naive `pip install`. If that is the case, create a virtual environement.
@@ -30,6 +30,9 @@ Add the following to the configuration(`.vimrc`, `init.vim`, or `init.lua` to de
 let g:python3_host_prog = expand('~/.venv/nvim/bin/python')
 ```
 
+## Tips for coc-extensions
+- `:CocList extensions` give list of extensions installed
+- For java, install coc-java and add `"semanticTokens.enable": true,` to the configuration file which can be opened with `:CocConfig`
 
 
 
