@@ -31,6 +31,7 @@ call plug#begin()
 " essential plugins
 Plug 'itchyny/lightline.vim'
 Plug 'szw/vim-maximizer'
+" use 'gc' operator to comment a line
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -55,6 +56,7 @@ Plug 'sbdchd/neoformat'
 " Plugin outside ~/.vim/plugged with post-update hook
 call plug#end()
 
+" lightline configuration
 let g:lightline = {
       \ 'colorscheme': 'codedark',
       \ 'active': {
@@ -67,6 +69,11 @@ let g:lightline = {
       \ }
 
 colorscheme codedark
+
+" Add (Neo)Vim's native statusline support
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 "szw/vim-maximizer
 nnoremap <leader>m :MaximizerToggle!<CR>
@@ -239,10 +246,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer
 command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 
-" Add (Neo)Vim's native statusline support
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 
 " Mappings for CoCList
@@ -308,3 +311,57 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
+" suggested setup for wsl clipboard
+" let g:clipboard = {
+"       \   'name': 'WslClipboard',
+"       \   'copy': {
+"       \      '+': 'clip.exe',
+"       \      '*': 'clip.exe',
+"       \    },
+"       \   'paste': {
+"       \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+"       \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+"       \   },
+"       \   'cache_enabled': 0,
+"       \ }
+
+" To ALWAYS use the clipboard for ALL operations (instead of interacting with
+" the \"+" and/or \"*" registers explicitly): >vim
+    set clipboard+=unnamedplus
+
+" System Shortcuts for auto-pairs
+"     <CR>  : Insert new indented line after return if cursor in blank brackets or quotes.
+"     <BS>  : Delete brackets in pair
+"     <M-p> : Toggle Autopairs (g:AutoPairsShortcutToggle)
+"     <M-e> : Fast Wrap (g:AutoPairsShortcutFastWrap)
+"     <M-n> : Jump to next closed pair (g:AutoPairsShortcutJump)
+"     <M-b> : BackInsert (g:AutoPairsShortcutBackInsert)
+
+" If <M-p> <M-e> or <M-n> conflict with another keys or want to bind to another keys, add
+
+"     let g:AutoPairsShortcutToggle = '<another key>'
+
+" to .vimrc, if the key is empty string '', then the shortcut will be disabled.
+
+" pointer to the python environment for neovim tha has pynvim library
+let g:python3_host_prog = expand('~/.venv/nvim/bin/python')
+
+" coc-snippets commands
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
