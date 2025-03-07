@@ -1,60 +1,69 @@
-set completeopt=menuone,noinsert,noselect
+" General settings
+" important settings
 set mouse=a
 set splitright
 set splitbelow
 set expandtab
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set number
 set relativenumber
 set ignorecase
 set smartcase
 set incsearch
 set diffopt+=vertical
-set hidden
-set nobackup
-set nowritebackup
-set cmdheight=1
 set shortmess+=c
-set signcolumn=yes
-set updatetime=750
 let mapleader = " "
+nnoremap <leader>v :e $MYVIMRC<CR>
 
+" less important settings
+set completeopt=menuone,noinsert,noselect
 if (has("termguicolors"))
   set termguicolors
 endif
-
 let g:markdown_fenced_languages = ['javascript', 'js= javascript', 'json=javascript']
-nnoremap <leader>v :e $MYVIMRC<CR>
 
+" Start of plugins
 call plug#begin()
-" essential plugins
+" tier 1 essential, most used plugins
 Plug 'itchyny/lightline.vim'
 Plug 'szw/vim-maximizer'
 " use 'gc' operator to comment a line
 Plug 'tpope/vim-commentary'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" shows lines changed since commit
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
 Plug 'jiangmiao/auto-pairs'
-
 " do CocInstall coc-java coc-javascript
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
-
-" I like these
 Plug 'tomasiser/vim-code-dark'
+Plug 'kevinhwang91/promise-async'
+Plug 'kevinhwang91/nvim-ufo'
+" requires to download formatter seeparately. it should be available in the
+" path. use <F4> to format the file, and use :CurrentFormatter and
+" :NextFormatter and :PrevFormatter to change the formatter
+Plug 'vim-autoformat/vim-autoformat'
+
+" tier 2, seems-good plugins
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'vim-test/vim-test'
+Plug 'github/copilot.vim'
+Plug 'tpope/vim-fugitive'
 
-Plug 'pangloss/vim-javascript'
-Plug 'itchyny/vim-gitbranch'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'kassio/neoterm'
-Plug 'sbdchd/neoformat'
-
+" tier 3, plugins that I want to try
+" Plug 'tpope/vim-dadbod'
+" Plug 'kassio/neoterm'
+" Plug 'sbdchd/neoformat'
+" Plug 'pangloss/vim-javascript'
+" Plug 'itchyny/vim-gitbranch'
+" Plug 'christoomey/vim-tmux-navigator'
+" Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
 " Plugin outside ~/.vim/plugged with post-update hook
 call plug#end()
+
+
+" settings for plugins
 
 " lightline configuration
 let g:lightline = {
@@ -80,17 +89,16 @@ nnoremap <leader>m :MaximizerToggle!<CR>
 
 
 "kassio/neoterm
-let g:neoterm_default_mod = 'vertical'
-let g:neoterm_size = 60
-let g:neoterm_autoinsert = 1
-nnoremap <c-q> :Ttoggle<CR>
-inoremap <c-q> <Esc>:Ttoggle<CR>
-tnoremap <c-q> <c-\><c-n>:Ttoggle<CR>
+" let g:neoterm_default_mod = 'vertical'
+" let g:neoterm_size = 60
+" let g:neoterm_autoinsert = 1
+" nnoremap <c-q> :Ttoggle<CR>
+" inoremap <c-q> <Esc>:Ttoggle<CR>
+" tnoremap <c-q> <c-\><c-n>:Ttoggle<CR>
 
 " sbdchd/neoformat
-nnoremap <leader>F : Neoformat prettier<CR>
-
-tnoremap <c-n> <c-\><c-n>
+" nnoremap <leader>F : Neoformat prettier<CR>
+" tnoremap <c-n> <c-\><c-n>
 
 
 " junegunn/fzf.vim
@@ -268,11 +276,11 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 
 "vim-test
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
+nmap <silent> <leader>tn :TestNearest<CR>
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>ts :TestSuite<CR>
+nmap <silent> <leader>tl :TestLast<CR>
+nmap <silent> <leader>tv :TestVisit<CR>
 " make test commands execute using dispatch.vim
 let test#strategy = "neovim"
 " for neovim
@@ -313,18 +321,18 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
 " suggested setup for wsl clipboard
-" let g:clipboard = {
-"       \   'name': 'WslClipboard',
-"       \   'copy': {
-"       \      '+': 'clip.exe',
-"       \      '*': 'clip.exe',
-"       \    },
-"       \   'paste': {
-"       \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-"       \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-"       \   },
-"       \   'cache_enabled': 0,
-"       \ }
+let g:clipboard = {
+      \   'name': 'WslClipboard',
+      \   'copy': {
+      \      '+': 'clip.exe',
+      \      '*': 'clip.exe',
+      \    },
+      \   'paste': {
+      \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      \   },
+      \   'cache_enabled': 0,
+      \ }
 
 " To ALWAYS use the clipboard for ALL operations (instead of interacting with
 " the \"+" and/or \"*" registers explicitly): >vim
@@ -365,3 +373,51 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " Use <leader>x for convert visual selected code to snippet
 xmap <leader>x  <Plug>(coc-convert-snippet)
+let g:python3_host_prog = expand('~/.venv/nvim/bin/python')
+
+function! SetupCommandAbbrs(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() ==# ":" && getcmdline() ==# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfunction
+
+" Use C to open coc config
+call SetupCommandAbbrs('C', 'CocConfig')
+
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-k>k
+nnoremap <c-l> <c-l>l
+
+autocmd FileType help nnoremap <buffer> <C-h> <C-w>h
+autocmd FileType help nnoremap <buffer> <C-j> <C-w>j
+autocmd FileType help nnoremap <buffer> <C-k> <C-w>k
+autocmd FileType help nnoremap <buffer> <C-l> <C-w>l
+autocmd FileType nerdtree nnoremap <buffer> <C-h> <C-w>h
+autocmd FileType nerdtree nnoremap <buffer> <C-j> <C-w>j
+autocmd FileType nerdtree nnoremap <buffer> <C-k> <C-w>k
+autocmd FileType nerdtree nnoremap <buffer> <C-l> <C-w>l
+
+" c-v is occupied by paste, so use leader+b for paste
+nnoremap <leader>b <c-v>
+
+" Set Vim options (can be done in Vimscript)
+set foldcolumn=1
+set foldlevel=99
+set foldlevelstart=99
+set foldenable
+
+" Key mappings (Vimscript calls Lua functions)
+nnoremap zR :lua require('ufo').openAllFolds()<CR>
+nnoremap zM :lua require('ufo').closeAllFolds()<CR>
+
+" Execute Lua setup
+lua << EOF
+require('ufo').setup({
+    provider_selector = function(bufnr, filetype, buftype)
+        return {'lsp', 'indent'}
+    end
+})
+EOF
+
+noremap <F4> :Autoformat<CR>
