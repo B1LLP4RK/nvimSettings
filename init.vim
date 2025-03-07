@@ -1,5 +1,6 @@
 " General settings
 " important settings
+set gdefault
 set mouse=a
 set splitright
 set splitbelow
@@ -40,8 +41,7 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'kevinhwang91/promise-async'
 Plug 'kevinhwang91/nvim-ufo'
 " requires to download formatter seeparately. it should be available in the
-" path. use <F4> to format the file, and use :CurrentFormatter and
-" :NextFormatter and :PrevFormatter to change the formatter
+" path
 Plug 'vim-autoformat/vim-autoformat'
 
 " tier 2, seems-good plugins
@@ -320,23 +320,6 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
-" suggested setup for wsl clipboard
-let g:clipboard = {
-      \   'name': 'WslClipboard',
-      \   'copy': {
-      \      '+': 'clip.exe',
-      \      '*': 'clip.exe',
-      \    },
-      \   'paste': {
-      \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-      \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-      \   },
-      \   'cache_enabled': 0,
-      \ }
-
-" To ALWAYS use the clipboard for ALL operations (instead of interacting with
-" the \"+" and/or \"*" registers explicitly): >vim
-    set clipboard+=unnamedplus
 
 " System Shortcuts for auto-pairs
 "     <CR>  : Insert new indented line after return if cursor in blank brackets or quotes.
@@ -398,8 +381,6 @@ autocmd FileType nerdtree nnoremap <buffer> <C-j> <C-w>j
 autocmd FileType nerdtree nnoremap <buffer> <C-k> <C-w>k
 autocmd FileType nerdtree nnoremap <buffer> <C-l> <C-w>l
 
-" c-v is occupied by paste, so use leader+b for paste
-nnoremap <leader>b <c-v>
 
 " Set Vim options (can be done in Vimscript)
 set foldcolumn=1
@@ -411,6 +392,7 @@ set foldenable
 nnoremap zR :lua require('ufo').openAllFolds()<CR>
 nnoremap zM :lua require('ufo').closeAllFolds()<CR>
 
+
 " Execute Lua setup
 lua << EOF
 require('ufo').setup({
@@ -421,3 +403,31 @@ require('ufo').setup({
 EOF
 
 noremap <F4> :Autoformat<CR>
+
+" disable copilot initially
+"
+nnoremap <leader>ghe :Copilot enable<CR>
+nnoremap <leader>ghd :Copilot disable<CR>
+let g:copilot_enabled = 0
+
+" OS dependent setup
+" c-v is occupied by paste in windows terminal, so use leader+b for paste
+nnoremap <leader>b <c-v>
+" suggested setup for wsl clipboard
+"
+let g:clipboard = {
+      \   'name': 'WslClipboard',
+      \   'copy': {
+      \      '+': 'clip.exe',
+      \      '*': 'clip.exe',
+      \    },
+      \   'paste': {
+      \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      \   },
+      \   'cache_enabled': 0,
+      \ }
+
+" To ALWAYS use the clipboard for ALL operations (instead of interacting with
+" the \"+" and/or \"*" registers explicitly): >vim
+    set clipboard+=unnamedplus
