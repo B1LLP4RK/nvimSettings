@@ -50,6 +50,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-test/vim-test'
 Plug 'github/copilot.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'honza/vim-snippets'
 
 " tier 3, plugins that I want to try
 " Plug 'tpope/vim-dadbod'
@@ -311,15 +312,35 @@ tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
 tnoremap <A-k> <C-\><C-N><C-w>k
 tnoremap <A-l> <C-\><C-N><C-w>l
+
+tnoremap <C-h> <C-\><C-N><C-w>h
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-l> <C-\><C-N><C-w>l
+
 inoremap <A-h> <C-\><C-N><C-w>h
 inoremap <A-j> <C-\><C-N><C-w>j
 inoremap <A-k> <C-\><C-N><C-w>k
 inoremap <A-l> <C-\><C-N><C-w>l
+
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+autocmd FileType help nnoremap <buffer> <C-h> <C-w>h
+autocmd FileType help nnoremap <buffer> <C-j> <C-w>j
+autocmd FileType help nnoremap <buffer> <C-k> <C-w>k
+autocmd FileType help nnoremap <buffer> <C-l> <C-w>l
+autocmd FileType nerdtree nnoremap <buffer> <C-h> <C-w>h
+autocmd FileType nerdtree nnoremap <buffer> <C-j> <C-w>j
+autocmd FileType nerdtree nnoremap <buffer> <C-k> <C-w>k
+autocmd FileType nerdtree nnoremap <buffer> <C-l> <C-w>l
 
 " System Shortcuts for auto-pairs
 "     <CR>  : Insert new indented line after return if cursor in blank brackets or quotes.
@@ -367,19 +388,6 @@ endfunction
 " Use C to open coc config
 call SetupCommandAbbrs('C', 'CocConfig')
 
-nnoremap <c-h> <c-w>h
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-k>k
-nnoremap <c-l> <c-l>l
-
-autocmd FileType help nnoremap <buffer> <C-h> <C-w>h
-autocmd FileType help nnoremap <buffer> <C-j> <C-w>j
-autocmd FileType help nnoremap <buffer> <C-k> <C-w>k
-autocmd FileType help nnoremap <buffer> <C-l> <C-w>l
-autocmd FileType nerdtree nnoremap <buffer> <C-h> <C-w>h
-autocmd FileType nerdtree nnoremap <buffer> <C-j> <C-w>j
-autocmd FileType nerdtree nnoremap <buffer> <C-k> <C-w>k
-autocmd FileType nerdtree nnoremap <buffer> <C-l> <C-w>l
 
 
 " Set Vim options (can be done in Vimscript)
