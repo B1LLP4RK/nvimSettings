@@ -29,6 +29,7 @@ call plug#begin()
 " tier 1 essential, most used plugins
 Plug 'itchyny/lightline.vim'
 Plug 'szw/vim-maximizer'
+Plug 'kdheepak/lazygit.nvim'
 " use 'gc' operator to comment a line
 Plug 'tpope/vim-commentary'
 " shows lines changed since commit
