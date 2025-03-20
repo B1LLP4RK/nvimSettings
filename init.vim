@@ -117,6 +117,9 @@ inoremap <expr> <c-x><c-f> fzf#vim#complete#path(
 " tpope/vim-fugitive
 nnoremap <leader>gg :G<cr>
 
+" setup mapping to call :LazyGit
+nnoremap <silent> <leader>lg :LazyGit<CR>
+
 " From COC readme page until line 255 
 " May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
 " utf-8 byte sequence
