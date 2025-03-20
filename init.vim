@@ -423,6 +423,11 @@ imap <M-]> <Plug>(copilot-next)
 imap <M-[> <Plug>(copilot-previous)
 imap <M-\> <Plug>(copilot-suggest)
 
+" coc-prettier 
+" below line adds command :Prettier to format code
+
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+
 " OS dependent setup
 " c-v is occupied by paste in windows terminal, so use leader+b for paste
 nnoremap <leader>b <c-v>
