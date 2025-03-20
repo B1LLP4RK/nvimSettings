@@ -418,6 +418,10 @@ nnoremap <leader>ghe :Copilot enable<CR>
 nnoremap <leader>ghd :Copilot disable<CR>
 let g:copilot_enabled = 0
 
+imap <M-]> <Plug>(copilot-next)
+imap <M-[> <Plug>(copilot-previous)
+imap <M-\> <Plug>(copilot-suggest)
+
 " OS dependent setup
 " c-v is occupied by paste in windows terminal, so use leader+b for paste
 nnoremap <leader>b <c-v>
