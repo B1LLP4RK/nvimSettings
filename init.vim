@@ -306,7 +306,9 @@ autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 
 " from :help terminal
 " To map <Esc> to exit terminal-mode: >vim
-tnoremap <Esc> <C-\><C-n>
+" this mapping blocks switching to normal mode for a nvim inside terminal of
+" nvim. 
+" tnoremap <Esc> <C-\><C-n>
 
 " To simulate |i_CTRL-R| in terminal-mode: >vim
 noremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
