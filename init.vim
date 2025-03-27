@@ -30,6 +30,8 @@ call plug#begin()
 Plug 'itchyny/lightline.vim'
 Plug 'szw/vim-maximizer'
 Plug 'kdheepak/lazygit.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'CopilotC-Nvim/CopilotChat.nvim'
 " use 'gc' operator to comment a line
 Plug 'tpope/vim-commentary'
 " shows lines changed since commit
@@ -64,6 +66,11 @@ Plug 'honza/vim-snippets'
 " Plugin outside ~/.vim/plugged with post-update hook
 call plug#end()
 
+lua << EOF
+require("CopilotChat").setup {
+  -- See Configuration section for options
+}
+EOF
 
 " settings for plugins
 
