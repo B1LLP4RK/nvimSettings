@@ -89,7 +89,7 @@ require("CopilotChat").setup({
     height = 0.4,
     row = 1
   }
-}
+})
 -- Register copilot-chat filetype
 require('render-markdown').setup({
   file_types = { 'markdown', 'copilot-chat' },
@@ -100,7 +100,7 @@ require('CopilotChat').setup({
   highlight_headers = false,
   separator = '---',
   error_header = '> [!ERROR] Error',
-}))
+})
 EOF
 
 " settings for plugins
