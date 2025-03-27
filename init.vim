@@ -32,6 +32,7 @@ Plug 'szw/vim-maximizer'
 Plug 'kdheepak/lazygit.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'CopilotC-Nvim/CopilotChat.nvim'
+Plug 'MeanderingProgrammer/render-markdown.nvim'
 " use 'gc' operator to comment a line
 Plug 'tpope/vim-commentary'
 " shows lines changed since commit
@@ -89,6 +90,17 @@ require("CopilotChat").setup({
     row = 1
   }
 }
+-- Register copilot-chat filetype
+require('render-markdown').setup({
+  file_types = { 'markdown', 'copilot-chat' },
+})
+
+-- Adjust chat display settings
+require('CopilotChat').setup({
+  highlight_headers = false,
+  separator = '---',
+  error_header = '> [!ERROR] Error',
+}))
 EOF
 
 " settings for plugins
