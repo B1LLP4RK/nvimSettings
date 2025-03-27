@@ -79,6 +79,16 @@ vim.keymap.set('n', '<leader>ccq', function()
     })
   end
 end, { desc = "CopilotChat - Quick chat" })
+
+require("CopilotChat").setup({
+  window = {
+    layout = 'float',
+    relative = 'cursor',
+    width = 1,
+    height = 0.4,
+    row = 1
+  }
+}
 EOF
 
 " settings for plugins
