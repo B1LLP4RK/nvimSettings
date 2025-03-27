@@ -22,7 +22,7 @@ set completeopt=menuone,noinsert,noselect
 if (has("termguicolors"))
   set termguicolors
 endif
-let g:markdown_fenced_languages = ['javascript', 'js= javascript', 'json=javascript']
+let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'json=javascript']
 
 " Start of plugins
 call plug#begin()
