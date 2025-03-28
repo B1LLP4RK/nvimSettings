@@ -33,6 +33,7 @@ Plug 'szw/vim-maximizer'
 Plug 'kdheepak/lazygit.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'CopilotC-Nvim/CopilotChat.nvim'
+" requires nerdfont
 Plug 'MeanderingProgrammer/render-markdown.nvim'
 " use 'gc' operator to comment a line
 Plug 'tpope/vim-commentary'
