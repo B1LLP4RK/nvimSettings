@@ -16,6 +16,7 @@ set diffopt+=vertical
 set shortmess+=c
 let mapleader = " "
 nnoremap <leader>v :e $MYVIMRC<CR>
+nnoremap <leader>cco :CopilotChatOpen<CR>
 
 " less important settings
 set completeopt=menuone,noinsert,noselect
