@@ -18,6 +18,24 @@ let mapleader = " "
 nnoremap <leader>v :e $MYVIMRC<CR>
 nnoremap <leader>cco :CopilotChatOpen<CR>
 
+" Normal mode mappings
+nnoremap <leader>cce :CopilotChatExplain<CR>
+nnoremap <leader>ccr :CopilotChatReview<CR>
+nnoremap <leader>ccf :CopilotChatFix<CR>
+nnoremap <leader>cco :CopilotChatOptimize<CR>
+nnoremap <leader>ccd :CopilotChatDocs<CR>
+nnoremap <leader>cct :CopilotChatTests<CR>
+nnoremap <leader>ccc :CopilotChatCommit<CR>
+
+" Visual mode mappings (same prompts, but preserve selection)
+vnoremap <leader>cce :CopilotChatExplain<CR>
+vnoremap <leader>ccr :CopilotChatReview<CR>
+vnoremap <leader>ccf :CopilotChatFix<CR>
+vnoremap <leader>cco :CopilotChatOptimize<CR>
+vnoremap <leader>ccd :CopilotChatDocs<CR>
+vnoremap <leader>cct :CopilotChatTests<CR>
+vnoremap <leader>ccc :CopilotChatCommit<CR>
+
 " less important settings
 set completeopt=menuone,noinsert,noselect
 if (has("termguicolors"))
