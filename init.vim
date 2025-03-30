@@ -35,6 +35,8 @@ vnoremap <leader>cco :CopilotChatOptimize<CR>
 vnoremap <leader>ccd :CopilotChatDocs<CR>
 vnoremap <leader>cct :CopilotChatTests<CR>
 vnoremap <leader>ccc :CopilotChatCommit<CR>
+nnoremap <leader>ccp :CopilotChatPrompts<CR>
+vnoremap <leader>ccp :CopilotChatPrompts<CR>
 
 " less important settings
 set completeopt=menuone,noinsert,noselect
