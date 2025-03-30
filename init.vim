@@ -22,7 +22,7 @@ nnoremap <leader>cco :CopilotChatOpen<CR>
 nnoremap <leader>cce :CopilotChatExplain<CR>
 nnoremap <leader>ccr :CopilotChatReview<CR>
 nnoremap <leader>ccf :CopilotChatFix<CR>
-nnoremap <leader>cco :CopilotChatOptimize<CR>
+nnoremap <leader>ccO :CopilotChatOptimize<CR>
 nnoremap <leader>ccd :CopilotChatDocs<CR>
 nnoremap <leader>cct :CopilotChatTests<CR>
 nnoremap <leader>ccc :CopilotChatCommit<CR>
@@ -31,7 +31,7 @@ nnoremap <leader>ccc :CopilotChatCommit<CR>
 vnoremap <leader>cce :CopilotChatExplain<CR>
 vnoremap <leader>ccr :CopilotChatReview<CR>
 vnoremap <leader>ccf :CopilotChatFix<CR>
-vnoremap <leader>cco :CopilotChatOptimize<CR>
+vnoremap <leader>ccO :CopilotChatOptimize<CR>
 vnoremap <leader>ccd :CopilotChatDocs<CR>
 vnoremap <leader>cct :CopilotChatTests<CR>
 vnoremap <leader>ccc :CopilotChatCommit<CR>
