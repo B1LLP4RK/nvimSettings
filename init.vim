@@ -373,7 +373,7 @@ autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 " tnoremap <Esc> <C-\><C-n>
 
 " To simulate |i_CTRL-R| in terminal-mode: >vim
-noremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
 " To use `ALT+{h,j,k,l}` to navigate windows from any mode: >vim
 tnoremap <A-h> <C-\><C-N><C-w>h
